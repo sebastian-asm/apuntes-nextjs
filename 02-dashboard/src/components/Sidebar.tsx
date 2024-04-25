@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import { IoLogoReact, IoBrowsersOutline, IoCalculator } from 'react-icons/io5'
+import { IoLogoReact, IoBrowsersOutline, IoCalculator, IoEgg } from 'react-icons/io5'
 
 import { SidebarMenuItem } from '.'
 
@@ -16,6 +16,12 @@ const menuItems = [
     icon: <IoCalculator size={25} />,
     title: 'Counter',
     description: 'Contador client side'
+  },
+  {
+    path: '/dashboard/pokemons',
+    icon: <IoEgg size={25} />,
+    title: 'Pokemons',
+    description: 'Pokedex online'
   }
 ]
 
@@ -24,7 +30,7 @@ export default function Sidebar() {
     <div
       id="menu"
       style={{ width: '400px' }}
-      className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 h-screen overflow-y-scroll"
+      className="bg-gray-900 min-h-screen z-10 text-slate-300 w-64 left-0 overflow-y-scroll"
     >
       <div id="logo" className="my-4 px-6">
         <div className="flex items-center mb-2">

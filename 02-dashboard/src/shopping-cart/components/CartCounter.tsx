@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 export default function CartCounter({ value = 0 }: { value?: number }) {
   const [counter, setCounter] = useState(value)
-
   return (
     <div className="mt-4 text-center">
       <span className="text-9xl block mb-4">{counter}</span>
