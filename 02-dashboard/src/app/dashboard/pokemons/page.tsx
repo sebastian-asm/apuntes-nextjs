@@ -1,4 +1,11 @@
+import type { Metadata } from 'next'
+
 import { SimplePokemon, PokemonsResponse, PokemonCard } from '@/pokemons'
+
+export const metadata: Metadata = {
+  title: '151 Pokémons',
+  description: '151 Pokémons'
+}
 
 const getPokemons = async (limit = 20, offset = 0): Promise<SimplePokemon[]> => {
   const resp = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`)

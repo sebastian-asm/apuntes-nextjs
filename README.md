@@ -2,11 +2,19 @@
 
 Las ventajas que ofrece el framework son:
 
-- SSR: server side rendering
-- SSG: static site generation
+- SSR: server side rendering (se ejecuta en tiempo de solicitud "on-demand")
+- SSG: static site generation (se realiza en tiempo de compilación "build")
 - CSR: clien side rendering (una spa)
 - ISR: incremental static regeneration
 - DR: dynamic routing
+
+Algunas nuevas herramientas:
+
+- **generateMetadata**: para generar los meta datos de forma dinámica
+- **usePathname** (client side): obtener datos de la url
+- **notFound**: redirige a un archivo not-found.tsx
+- **generateStaticParams**: permite generar rutas estáticamente en el momento de la compilación y evitar una solicitud on-demand
+- **fetch**: ahora nos permite trabajar con múltiples [estrategias](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating) entre ellas revalidar la solicitud en un lapso de tiempo
 
 Ahora en NextJS todos los componentes que estén dentro de la carpeta `/app` son _server components_ de forma nativa, o sea, generados del lado del servidor para enviar el menos código de JS posible al cliente. Esto nos hará pensar cuales serán los componentes que se ejecutarán del lado del cliente y quizás para conseguirlo, será necesario pensar en como dividir en pequeños componentes nuestra app para lograrlo.
 
