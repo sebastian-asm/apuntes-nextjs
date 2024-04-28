@@ -2,17 +2,17 @@
 
 Las ventajas que ofrece el framework son:
 
-- SSR: server side rendering (se ejecuta en tiempo de solicitud "on-demand")
-- SSG: static site generation (se realiza en tiempo de compilación "build")
-- CSR: clien side rendering (una spa)
-- ISR: incremental static regeneration
-- DR: dynamic routing
+- SSR: Server Side Rendering (se ejecuta en tiempo de solicitud "on-demand")
+- SSG: Static Site Generation (se realiza en tiempo de compilación "build")
+- CSR: Clien Side Rendering (una spa)
+- ISR: Incremental Static Regeneration
+- DR: Dynamic Routing
 
 Algunas nuevas herramientas:
 
 - **generateMetadata**: para generar los meta datos de forma dinámica
 - **usePathname** (client side): obtener datos de la url
-- **notFound**: redirige a un archivo not-found.tsx
+- **notFound**: redirige a un archivo `not-found.tsx`
 - **generateStaticParams**: permite generar rutas estáticamente en el momento de la compilación y evitar una solicitud on-demand
 - **fetch**: ahora nos permite trabajar con múltiples [estrategias](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating) entre ellas revalidar la solicitud en un lapso de tiempo
 
@@ -28,4 +28,8 @@ Para trabajar con turbo basta con agregar la bandera `--turbo` en el script del 
 
 Por defecto, cuando se usa el `fetch` se estará cacheando la respuesta desde la segunda petición. Para conocer más, revisar la [documentación](https://nextjs.org/docs/app/building-your-application/data-fetching/fetching-caching-and-revalidating).
 
+## NextJS API Routes
+
 Las APIs pueden ir en cualquier carpeta de nuestro poyecto, a diferencia de la versión anterior _Pages Router_, donde solo tenian que ir estrictamente dentro de la carpeta `/api`. La unica exensión en esta versión actual de _App Router_ es que solo puede ir un archivo de api llamado `route.ts` el cual **no** puede convivir con el archivo `page.tsx`, en caso de existir ambos en la misma carpeta, NextJS ejecutaría el page y dejando de lado el archivo de api route.
+
+Desde la versión 5.2 de TypeScript, se retorna una respuesta json con `Response` en vez de `NextResponse` en el archivo de `route.ts`.
