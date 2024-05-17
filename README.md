@@ -44,3 +44,7 @@ Desde la versión 5.2 de TypeScript, se retorna una respuesta json con `Response
 ## Server Actions
 
 Es una función que tiene acceso al servidor, para ello es necesario usar `'user server'` a nivel de componente o a nivel de función. Dentro de los SA se pueden utilizar las _actualizaciones optimistas_ la que nos permitiría darle la sensación a un usuario de tener 0 latencia al momento de realizar alguna acción en nuestro sitio.
+
+- **revalidatePath**: permite actualizar el front pero solo lo que cambio
+- **useOptimistic (hook)**: las actualizaciones optimistas son una técnica que nos permite mejorar la velocidad **visual** de nuestra app. Esto dará la sensación que nuestra app no tiene latencia y que responde rápidamente a los eventos del usuario
+- **[Route Segment Config](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config)**: permiten configurar el comportamiento y caché de una page, layout o route handler
