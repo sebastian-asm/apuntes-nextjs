@@ -9,7 +9,7 @@ export const metadata = {
 export default async function RestTododPage() {
   const todos = await prisma.todo.findMany({ orderBy: { description: 'desc' } })
   return (
-    <div className="px-6 pt-6">
+    <div className="p-6">
       <NewTodo />
       <TodosGrid todos={todos} />
     </div>

@@ -48,3 +48,5 @@ Es una función que tiene acceso al servidor, para ello es necesario usar `'user
 - **revalidatePath**: permite actualizar el front pero solo lo que cambio
 - **useOptimistic (hook)**: las actualizaciones optimistas son una técnica que nos permite mejorar la velocidad **visual** de nuestra app. Esto dará la sensación que nuestra app no tiene latencia y que responde rápidamente a los eventos del usuario
 - **[Route Segment Config](https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config)**: permiten configurar el comportamiento y caché de una page, layout o route handler
+
+Las _cookies_ viajan automáticamente cuando se realiza una petición HTTP, y los server components puede leer esa información que viaja en las cookies para generar el contenido del lado del Servidor, pero de todas formas no hay que confirmar absolumente en ellas ya que son volátiles.

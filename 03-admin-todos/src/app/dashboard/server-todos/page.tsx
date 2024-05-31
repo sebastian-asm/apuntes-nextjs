@@ -12,7 +12,7 @@ export const metadata = {
 export default async function ServerTododPage() {
   const todos = await prisma.todo.findMany({ orderBy: { description: 'desc' } })
   return (
-    <div className="px-6 pt-6">
+    <div className="p-6">
       <NewTodo />
       <h1 className="text-2xl mb-4">Server Actions</h1>
       <TodosGrid todos={todos} />
