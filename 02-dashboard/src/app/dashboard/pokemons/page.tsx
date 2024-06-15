@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { SimplePokemon, PokemonsResponse, PokemonCard } from '@/pokemons'
+import { SimplePokemon, PokemonsResponse, PokemonGrid } from '@/pokemons'
 
 export const metadata: Metadata = {
   title: '151 Pokémons',
@@ -23,7 +23,7 @@ export default async function Pokemons() {
         Listado de Pokemons <small className="font-normal block">obtenidos de forma estática</small>
       </h1>
       <div className="flex flex-wrap mt-5 gap-8">
-        <PokemonCard pokemons={pokemons} />
+        <PokemonGrid pokemons={pokemons} />
       </div>
     </section>
   )

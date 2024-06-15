@@ -1,10 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 
+// import { localStorageMiddleware } from './middlewares/localstorage-middleware'
 import counterReduce from './counter/counterSlice'
+import pokemonsReduce from './pokemons/pokemons'
 
 export const store = configureStore({
-  reducer: { counter: counterReduce }
+  reducer: {
+    counter: counterReduce,
+    pokemons: pokemonsReduce
+  }
+  // forma recomendada para trabajar con LS en redux
+  // middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(localStorageMiddleware as any)
 })
 
 // disparar acciones
