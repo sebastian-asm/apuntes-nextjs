@@ -1,16 +1,25 @@
 // https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
+import { redirect } from 'next/navigation'
 
-import prisma from '@/lib/prisma'
+import { getUserSession } from '@/auth/actions/auth-actions'
 import { NewTodo, TodosGrid } from '@/todos'
+import prisma from '@/lib/prisma'
 
 export const metadata = {
   title: 'Listado de tareas'
 }
 
 export default async function ServerTododPage() {
-  const todos = await prisma.todo.findMany({ orderBy: { description: 'desc' } })
+  const user = await getUserSession()
+  if (!user) redirect('/api/auth/signin')
+
+  const todos = await prisma.todo.findMany({
+    where: { userId: user.id },
+    orderBy: { description: 'desc' }
+  })
+
   return (
     <div className="p-6">
       <NewTodo />

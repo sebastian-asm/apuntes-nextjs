@@ -1,14 +1,23 @@
 import * as yup from 'yup'
+
 import prisma from '@/lib/prisma'
+import { getUserSession } from '@/auth/actions/auth-actions'
 
 interface Segments {
   params: { id: string }
 }
 
-export async function GET(request: Request, { params }: Segments) {
-  const { id } = params
+const getTodo = async (id: string) => {
+  const user = await getUserSession()
+  if (!user) return null
   const todo = await prisma.todo.findFirst({ where: { id } })
-  if (!todo) return Response.json({ msg: `El id ${id} no existe` }, { status: 404 })
+  if (todo?.userId !== user.id) return null
+  return todo
+}
+
+export async function GET(request: Request, { params }: Segments) {
+  const todo = await getTodo(params.id)
+  if (!todo) return Response.json({ msg: `El id ${params.id} no existe` }, { status: 404 })
   return Response.json({ todo })
 }
 
@@ -18,14 +27,13 @@ const putSchema = yup.object({
 })
 
 export async function PUT(request: Request, { params }: Segments) {
-  const { id } = params
-  const todo = await prisma.todo.findFirst({ where: { id } })
-  if (!todo) return Response.json({ msg: `El id ${id} no existe` }, { status: 404 })
+  const todo = await getTodo(params.id)
+  if (!todo) return Response.json({ msg: `El id ${params.id} no existe` }, { status: 404 })
 
   try {
     const { complete, description } = await putSchema.validate(await request.json())
     const updatedTodo = await prisma.todo.update({
-      where: { id },
+      where: { id: params.id },
       data: { complete, description }
     })
     return Response.json({ updatedTodo })

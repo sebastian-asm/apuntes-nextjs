@@ -3,8 +3,8 @@
 'use server'
 import { revalidatePath } from 'next/cache'
 
-import prisma from '@/lib/prisma'
 import { Todo } from '@prisma/client'
+import prisma from '@/lib/prisma'
 
 // simulación de conexión lenta
 export const sleep = (seconds: number): Promise<boolean> => {
@@ -14,7 +14,7 @@ export const sleep = (seconds: number): Promise<boolean> => {
 }
 
 export const toggleTodo = async (id: string, complete: boolean): Promise<Todo> => {
-  await sleep(3)
+  // await sleep(3)
   const todo = await prisma.todo.findFirst({ where: { id } })
   if (!todo) throw `El id ${id} no existe`
   const updatedTodo = await prisma.todo.update({
